@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RISC-V CPU Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    #team {
+  display: none;
+}
+
+    body {
+      background-color: #0d214b;
+    }
+    header {
+      background-color: #5284b5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+  background-color: #01182e;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    margin: 10px 0;
+  }
+}
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+
+ /*   .sidebar {
+  position: fixed;
+  top: 100px; 
+  left: 0;
+  width: 180px;
+  height: auto;
+  background-color: #0d1b2a;
+  padding: 20px 10px;
+  border-right: 1px solid #1e2d40;
+  z-index: 999;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  color: #00bcd4;
+}
+
+.main-content {
+  margin-left: 200px; 
+  padding: 20px;
+}
+*/
+
+#waveforms {
+  display: none;
+}
+
+
+.intro {
+  max-width: 1000px; /* Allow the intro section to take up more space */
+  margin: 40px auto; /* Center the content with some margin */
+  padding: 0; /* Remove the padding */
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.intro h2 {
+  font-size: 2rem; /* Make the title larger */
+  font-weight: bold;
+  margin-bottom: 15px; /* Space between title and content */
+  color: #628bb4;
+  text-align: left; /* Dark color for headings */
+}
+
+.intro p {
+  line-height: 1.6; /* Increase line height for better readability */
+  margin-bottom: 20px; /* Add space between paragraphs */
+  color: #ffffff;
+  text-align: left; /* Light gray for text */
+}
+
+.intro h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #2980b9;
+  text-align: left; /* Blue color for subheadings */
+}
+
+.intro hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 2px solid #2980b9; /* Thin blue divider between sections */
+}
+
+
+@media screen and (max-width: 768px) {
+  .intro {
+    padding: 20px;
+    margin: 15px;
+  }
+}
+
+
+    .team-section {
+      margin-top: 60px;
+    }
+    .team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .team-card {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+  }
+}
+
+    .team-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 220px;
+      box-shadow: 0 4px 12px rgba(46, 63, 157, 0.199);
+      text-align: center;
+    }
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+    .team-card h3 {
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .team-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    @media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+  }
+  header p {
+    font-size: 16px;
+  }
+
+  .intro p {
+    font-size: 14px;
+  }
+
+  .team-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
+    .social-links a {
+      margin: 0 5px;
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social-links a:hover {
+      color: #2980b9;
+    }
+    .social-links i {
+  font-size: 20px;
+}
+
+    html {
+  scroll-behavior: smooth;
+}
+
+  </style>
+</head>
+<body>
+ 
+
+  <header>
+    <h1>RISC-V Based CPU Design</h1>
+    <p>Welcome to our project showcase website</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#project">Project</a>
+    <a href="#waveforms">Waveforms</a>
+    <a href="#references">References</a>
+    <a href="#team">Team</a>
+  </nav>
+  
+
+  <main>
+    <div class="intro" id="home">
+      <h2>About the Project4566</h2>
+    
+      <p>
+        This website presents our RISC-V based CPU design project. Here you'll find
+        all details of our implementation including waveforms, design architecture,
+        layout images, and the research papers we referred to. We're excited to
+        share our journey and work with you!
+      </p>
+    </div>
+
+    
+    <div class="intro" id="project">
+      <h2>Introduction</h2>
+      <p>
+        The RISC-V architecture is a modern, open-source instruction set architecture (ISA)
+        based on established reduced instruction set computing principles. Our goal is to
+        implement a functional 32-bit CPU core using Verilog, simulate its behavior,
+        and validate our design through waveform analysis and synthesis. The CPU
+        includes basic instruction handling, ALU operations, memory access, and control units.
+      </p>
+    
+      <h3>Chapter 1: Architecture Overview</h3>
+      <hr />
+      <p>
+        In this chapter, we will dive deeper into the RISC-V architecture. It is a simple,
+        clean, and flexible instruction set design that allows both research and industry
+        to quickly develop processors. We will explore its modularity and scalability.
+      </p>
+    
+      <h3>Chapter 2: Verilog Implementation</h3>
+      <hr />
+      <p>
+        This section explains how we implemented the CPU using Verilog, focusing on the
+        register-transfer level (RTL) design. We'll describe each functional block, such as the ALU, 
+        memory system, and control unit.
+      </p>
+    </div>
+
+    <div class="intro" id="waveforms">
+      <h2>Waveform Analysis</h2>
+      <p>Here we show simulation results and waveform diagrams from our testbenches.</p>
+       <img src="waveforms\alu_wave.jpg" alt="Waveform" style="max-width:70%; display: block; margin: 20px auto;">
+       <p>Obtained waveform for ALU design</p>
+       <img src="waveforms\lsu_wave.jpg" alt="Waveform" style="max-width:70%; display: block; margin: 20px auto;">
+       <p>Obtained waveform for LSU design</p>
+     <!-- <img src="waveforms\alu_wave.jpg" alt="Waveform" style="max-width:70%; display: block; margin: 20px auto;">
+       <p>Obtained waveform for LSU design</p> -->
+       <img src="waveforms\mul_wave.jpg" alt="Waveform" style="max-width:70%; display: block; margin: 20px auto;">
+       <p>Obtained waveform for multipler design</p>
+    </div>
+    <div class="intro" id="references">
+      <h2>References</h2>
+      <p>These are the primary sources and research materials we referred:</p>
+      <ul>
+        <li><a href="https://riscv.org/">Official RISC-V Website</a></li>
+        <li><a href="https://github.com/ultraembedded/riscv">GitHub Reference</a></li>
+      </ul>
+    </div>
+    
+    
+
+    <section id="team" class="team-section">
+      <h2>Meet the Team</h2>
+      <div class="team-container">
+        <div class="team-card">
+          <img src="pfp\kp.jpg" alt="Team Member 1">
+          <h3>Amritha K Poojari</h3>
+          <p>Frontend & Documentation</p>
+          <div class="social-links">
+            <a href="https://github.com/Amritha-k42"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/amritha-k-poojari-62559524b/"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <img src="pfp\nigs.JPG" alt="Team Member 2">
+          <h3>Anantha Krishna</h3>
+          <p>Verilog Design</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/anantha-krishna-93590023a/"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <img src="pfp\kini1.jpg" alt="Team Member 3">
+          <h3>G Shreya Kini</h3>
+          <p>Testing & Waveform Analysis</p>
+          <div class="social-links">
+            <a href="https://github.com/Shreya-k06"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/g-shreya-kini-6a849b2a9/"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/100" alt="Team Member 4">
+          <h3>Siddharth D</h3>
+          <p>Team member</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const teamLink = document.querySelector('a[href="#team"]');
+    const teamSection = document.querySelector('#team');
+  
+    teamSection.style.display = 'none'; // Hide initially
+  
+    teamLink.addEventListener('click', function (e) {
+      e.preventDefault(); // Stop default scroll
+  
+      if (teamSection.style.display === 'none') {
+        teamSection.style.display = 'block';
+        teamSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        teamSection.style.display = 'none';
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const waveformsLink = document.querySelector('a[href="#waveforms"]');
+      const waveformsSection = document.getElementById('waveforms');
+  
+      waveformsLink.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
+  
+        if (waveformsSection.style.display === 'none' || waveformsSection.style.display === '') {
+          waveformsSection.style.display = 'block';
+          waveformsSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          waveformsSection.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  
+  
+</body>
+</html>
