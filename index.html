@@ -19,10 +19,84 @@
       text-align: center;
     }
 
+    /* Sidebar base */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background-color: #20232a;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar a {
+  color: white;
+  padding: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+}
+
+.sidebar a:hover {
+  background-color: #20232a;
+  color: #61dafb;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background-color: #282c34;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Content shift when sidebar is visible */
+.content {
+  margin-left: 220px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 180px;
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  .content.shifted {
+    margin-left: 180px;
+  }
+}
+
+
     nav {
       display: flex;
       justify-content: center;
-      background: #282c34;
+      background: #466ab4;
     }
 
     nav a {
@@ -154,7 +228,6 @@
     font-size: 0.9rem;
   }
 }
-    }
 
     .section {
       display: none;
@@ -171,14 +244,20 @@
     <h1>32-bit RISC-V CPU Project</h1>
   </header>
 
-  <nav>
-    <a href="#overview">Overview</a>
-    <a href="#details">Project Details</a>
-    <a href="#waveforms">Waveforms</a>
-    <a href="#layout">Layout</a>
-    <a href="#references">References</a>
-    <a href="#team">Team</a>
-  </nav>
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
+
+<nav class="sidebar" id="sidebar">
+  <a href="#overview">Overview</a>
+  <a href="#details">Project Details</a>
+  <a href="#waveforms">Waveforms</a>
+  <a href="#layout">Layout</a>
+  <a href="#references">References</a>
+  <a href="#team">Team</a>
+</nav>
+
+<div class="content" id="mainContent">
+  <!-- Keep all your <section> content inside this div -->
+
 
   <section id="overview">
     <h2>Overview</h2>
@@ -236,7 +315,7 @@
     </div>
   </section>
 
-  <section id="references">
+  <section id="references" class="section">
     <h2>References</h2>
     <ul>
       <li><a href="https://riscv.org/">RISC-V Official Site</a></li>
@@ -246,7 +325,7 @@
     </ul>
   </section>
 
-  <section id="team">
+  <section id="team" class="section">
     <h2>Team Members</h2>
     <div class="card-grid">
       <div class="card team-member">
@@ -294,14 +373,22 @@
   </section>
 
   <script>
+    // Sidebar toggle
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('mainContent');
+      sidebar.classList.toggle('active');
+      content.classList.toggle('shifted');
+    }
+  
     // Show "overview" by default
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.querySelector('#overview').classList.add('active');
     });
   
-    // Handle navigation
-    document.querySelectorAll('nav a').forEach(link => {
+    // Navigation click logic
+    document.querySelectorAll('.sidebar a').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
@@ -311,12 +398,15 @@
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
           targetSection.classList.add('active');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById('sidebar').classList.remove('active');
+          document.getElementById('mainContent').classList.remove('shifted');
         }
       });
     });
   </script>
   
+</div>  
 
   <footer style="background-color:#01182e; color:white; text-align:center; padding:30px 20px; margin-top:40px;">
     <div style="margin-bottom: 15px;">
@@ -334,6 +424,7 @@
       &copy; 2025 RISC-V CPU Project. All rights reserved.
     </div>
   </footer>
+
 </body>
 </html>
 
