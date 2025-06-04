@@ -125,38 +125,40 @@
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
       gap: 1rem;
     }
 
     .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-      text-align: center;
-    }
-
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 0.3rem;
+  
+  transition: transform 0.3s;
+  text-align: center;
+  max-height: 320px;
+}
     .card img {
-     width: 100%;
-     max-width: 179px;
-     height: auto;
-     border-radius: 50%;
-     object-fit: cover;
-     margin-bottom: 0.5rem;
-    }
+  width: 100%;
+  max-width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.15rem;
+}
+
+
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-7px);
     }
 
     .team-member img { 
-      width: 200px;
-      height: 200px;
+      width: 130px;
+      height: 130px;
       object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 1px;
+      margin-bottom: 0.5px;
    }
     .social-links a {
       margin-right: 10px;
@@ -191,7 +193,7 @@
 /* Team section */
 .team {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1rem;
   justify-items: center;
   margin-top: 1rem;
@@ -199,13 +201,13 @@
 
 /* Team card */
 .team-card {
-  background: white;
+  background: #f5f5f5;
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 200px;
+  
+  width: 90%;
+  max-width: 150px;
   transition: transform 0.3s ease;
   font-size: 0.9rem;
 }
@@ -224,17 +226,17 @@
 
 /* Contact links */
 .team-card .links a {
-  font-size: 0.8rem;
-  margin: 0 0.2rem;
+  font-size: 0.6rem;
+  margin: 0 0.1rem;
   text-decoration: none;
   color: #007BFF;
 }
 
 
     @media (max-width: 500px) {
-      nav {
-        flex-direction: column;
-      }
+      /* nav {
+       flex-direction: column;
+      }*/
       .team-grid {
         display: flex;
     flex-wrap: wrap;
@@ -383,6 +385,18 @@
           <a href="42amrithak@gmail.com">Mail</a>
         </div>
       </div>
+
+<div class="card team-member">
+        <img src="pfp/kini1.jpg" alt="Member 3"/>
+        <h3>G. Shreya Kini</h3>
+        <p>Hardware Design</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/g-shreya-kini-6a849b2a9/">LinkedIn</a>
+          <a href="https://github.com/Shreya-k06">GitHub</a>
+          <a href="shreyakini666@gmail.com">Mail</a>
+        </div>
+      </div>
+
       <div class="card team-member">
         <img src="pfp/nigs.JPG" alt="Member 2"/>
         <h3>Anantha Krishna</h3>
@@ -393,16 +407,7 @@
           <a href="clashak1111@gmail.com">Mail</a>
         </div>
       </div>
-      <div class="card team-member">
-        <img src="pfp/kini1.jpg" alt="Member 3"/>
-        <h3>G. Shreya Kini</h3>
-        <p>Hardware Design</p>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/g-shreya-kini-6a849b2a9/">LinkedIn</a>
-          <a href="https://github.com/Shreya-k06">GitHub</a>
-          <a href="shreyakini666@gmail.com">Mail</a>
-        </div>
-      </div>
+      
       <div class="card team-member">
         <img src="pfp/sid.jpg" alt="Member 4"/>
         <h3>Siddharth D</h3>
