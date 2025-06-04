@@ -64,7 +64,7 @@
 
 /* Content shift when sidebar is visible */
 .content {
-  margin-left: 220px;
+  margin-left: 100px;
   transition: margin-left 0.3s ease-in-out;
 }
 
@@ -73,6 +73,10 @@
   .sidebar {
     transform: translateX(-100%);
     width: 180px;
+  }
+
+  .nav a {
+    margin: 0.5rem;
   }
 
   .sidebar.active {
@@ -102,7 +106,8 @@
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 1rem;
+      margin: 0.5rem;
+      
       font-weight: bold;
       transition: color 0.3s;
     }
@@ -147,7 +152,10 @@
   margin-bottom: 0.15rem;
 }
 
-
+.team-member h3, p, .social-links {
+  font-size: 0.9rem;
+  column-gap: 1 rem;
+}
 
     .card:hover {
       transform: translateY(-7px);
